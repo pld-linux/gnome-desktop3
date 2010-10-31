@@ -1,12 +1,12 @@
 Summary:	The core programs for the GNOME GUI desktop environment
 Summary(pl.UTF-8):	Podstawowe programy środowiska graficznego GNOME
 Name:		gnome-desktop3
-Version:	2.90.4
+Version:	2.91.0
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-desktop/2.90/gnome-desktop-%{version}.tar.bz2
-# Source0-md5:	7ae2daedf348039d688186c2008f53e0
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-desktop/2.91/gnome-desktop-%{version}.tar.bz2
+# Source0-md5:	ef8a5dd6f679849f808751ddd9bc96fd
 Source1:	pld-logo.svg
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
@@ -17,7 +17,8 @@ BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.20.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
-BuildRequires:	gtk+2-devel >= 2:2.16.0
+BuildRequires:	gdk-pixbuf2-devel >= 2.22.0
+BuildRequires:	gtk+3-devel >= 2.91.0
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
@@ -70,7 +71,7 @@ Summary:	GNOME desktop includes
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek GNOME desktop
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gtk+2-devel >= 2:2.16.0
+Requires:	gtk+3-devel >= 2.91.0
 Requires:	startup-notification-devel >= 0.8
 
 %description devel
@@ -133,8 +134,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} -f $RPM_BUILD_ROOT%{_pixmapsdir}/gnome-logo-icon-transparent.png
-install %{SOURCE1} $RPM_BUILD_ROOT%{_pixmapsdir}/gnome-logo-icon-transparent.svg
 %{__rm} -f  $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang %{name} --with-gnome --with-omf --all-name
@@ -157,8 +156,7 @@ rm -fr $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-about
 %{_mandir}/man1/gnome-about.1*
 %{_datadir}/gnome-about
-%{_datadir}/libgnome-desktop
-%{_pixmapsdir}/*
+%{_datadir}/libgnome-desktop-3.0
 %{_desktopdir}/gnome-about.desktop
 
 %files libs
