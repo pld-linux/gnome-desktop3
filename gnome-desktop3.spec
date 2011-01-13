@@ -1,12 +1,12 @@
 Summary:	gnome-desktop library
 Summary(pl.UTF-8):	Biblioteka gnome-desktop
 Name:		gnome-desktop3
-Version:	2.91.4
+Version:	2.91.6
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-desktop/2.91/gnome-desktop-%{version}.tar.bz2
-# Source0-md5:	60b555cb73b2ac4c90d296b071e8791b
+# Source0-md5:	cb792e0dad9f6a66c797cc7df3e0458c
 Source1:	pld-logo.svg
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
@@ -18,7 +18,8 @@ BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.20.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
-BuildRequires:	gsettings-desktop-schemas-devel
+BuildRequires:	gobject-introspection-devel >= 0.9.7
+BuildRequires:	gsettings-desktop-schemas-devel >= 0.1.4
 BuildRequires:	gtk+3-devel >= 2.91.7
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.40.0
@@ -35,8 +36,8 @@ Requires(post,postun):	scrollkeeper
 Requires:	python-gnome
 Requires:	python-pygtk-gtk
 # sr@Latn vs. sr@latin
-Conflicts:	glibc-misc < 6:2.7
 Obsoletes:	gnome-desktop3-libs
+Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -99,7 +100,7 @@ Dokumentacja API gnome-desktop.
 %setup -q -n gnome-desktop-%{version}
 
 sed -i -e 's/en@shaw//' po/LINGUAS
-rm -f po/en@shaw.po
+%{__rm} po/en@shaw.po
 
 %build
 %{__gtkdocize}
@@ -146,12 +147,15 @@ rm -fr $RPM_BUILD_ROOT
 %{_datadir}/libgnome-desktop-3.0
 %attr(755,root,root) %{_libdir}/libgnome-desktop-3.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgnome-desktop-3.so.0
+%{_datadir}/gnome/gnome-version.xml
+%{_libdir}/girepository-1.0/GnomeDesktop-3.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-desktop-3.so
 %{_includedir}/gnome-desktop-3.0
 %{_pkgconfigdir}/gnome-desktop-3.0.pc
+%{_datadir}/gir-1.0/GnomeDesktop-3.0.gir
 
 %files static
 %defattr(644,root,root,755)
