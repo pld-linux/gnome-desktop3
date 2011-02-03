@@ -1,12 +1,12 @@
 Summary:	gnome-desktop library
 Summary(pl.UTF-8):	Biblioteka gnome-desktop
 Name:		gnome-desktop3
-Version:	2.91.6
+Version:	2.91.6.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-desktop/2.91/gnome-desktop-%{version}.tar.bz2
-# Source0-md5:	cb792e0dad9f6a66c797cc7df3e0458c
+# Source0-md5:	ae0bb1a2507ef513dde0ce936cee19d3
 Source1:	pld-logo.svg
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
