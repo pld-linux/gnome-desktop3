@@ -25,7 +25,6 @@ BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
@@ -33,10 +32,8 @@ BuildRequires:	sed >= 4.0
 BuildRequires:	startup-notification-devel >= 0.8
 BuildRequires:	xorg-lib-libXrandr-devel >= 1.2
 Requires(post,postun):	scrollkeeper
-Requires:	python-gnome
-Requires:	python-pygtk-gtk
-# sr@Latn vs. sr@latin
 Obsoletes:	gnome-desktop3-libs
+# sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -100,7 +97,9 @@ Dokumentacja API gnome-desktop.
 %setup -q -n gnome-desktop-%{version}
 
 sed -i -e 's/en@shaw//' po/LINGUAS
+sed -i -e 's/^kg//' po/LINGUAS
 %{__rm} po/en@shaw.po
+%{__rm} po/kg.po
 
 %build
 %{__gtkdocize}
@@ -126,7 +125,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} -f  $RPM_BUILD_ROOT%{_libdir}/*.la
+%{__rm} -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang %{name} --with-gnome --with-omf --all-name
 
@@ -144,10 +143,10 @@ rm -fr $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README
-%{_datadir}/libgnome-desktop-3.0
 %attr(755,root,root) %{_libdir}/libgnome-desktop-3.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgnome-desktop-3.so.0
 %{_datadir}/gnome/gnome-version.xml
+%{_datadir}/libgnome-desktop-3.0
 %{_libdir}/girepository-1.0/GnomeDesktop-3.0.typelib
 
 %files devel
