@@ -130,7 +130,7 @@ rm -rf $RPM_BUILD_ROOT
 %find_lang %{name} --with-gnome --with-omf --all-name
 
 %clean
-rm -fr $RPM_BUILD_ROOT
+rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
