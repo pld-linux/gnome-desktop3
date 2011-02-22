@@ -1,15 +1,14 @@
 Summary:	gnome-desktop library
 Summary(pl.UTF-8):	Biblioteka gnome-desktop
 Name:		gnome-desktop3
-Version:	2.91.6.1
-Release:	2
+Version:	2.91.90
+Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-desktop/2.91/gnome-desktop-%{version}.tar.bz2
-# Source0-md5:	ae0bb1a2507ef513dde0ce936cee19d3
+# Source0-md5:	355c023f9962a0bc9a3ac3f2512a3847
 Source1:	pld-logo.svg
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	docbook-dtd412-xml
@@ -59,8 +58,8 @@ Summary:	GNOME desktop includes
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek GNOME desktop
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gsettings-desktop-schemas-devel
-Requires:	gtk+3-devel >= 2.91.0
+Requires:	gsettings-desktop-schemas-devel >= 0.1.4
+Requires:	gtk+3-devel >= 3.0.0
 Requires:	startup-notification-devel >= 0.8
 
 %description devel
@@ -96,9 +95,7 @@ Dokumentacja API gnome-desktop.
 %prep
 %setup -q -n gnome-desktop-%{version}
 
-sed -i -e 's/en@shaw//' po/LINGUAS
 sed -i -e 's/^kg//' po/LINGUAS
-%{__rm} po/en@shaw.po
 %{__rm} po/kg.po
 
 %build
@@ -125,7 +122,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} -f $RPM_BUILD_ROOT%{_libdir}/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang %{name} --with-gnome --with-omf --all-name
 
