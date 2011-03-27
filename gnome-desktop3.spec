@@ -55,7 +55,7 @@ Pakiet ten zawiera bibliotekę gnome-desktop.
 
 %package devel
 Summary:	GNOME desktop includes
-Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek GNOME desktop
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki GNOME desktop
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gsettings-desktop-schemas-devel >= 0.1.4
@@ -66,19 +66,19 @@ Requires:	startup-notification-devel >= 0.8
 GNOME desktop header files.
 
 %description devel -l pl.UTF-8
-Pliki nagłówkowe bibliotek GNOME desktop.
+Pliki nagłówkowe biblioteki GNOME desktop.
 
 %package static
-Summary:	GNOME desktop static libraries
-Summary(pl.UTF-8):	Statyczne biblioteki GNOME desktop
+Summary:	GNOME desktop static library
+Summary(pl.UTF-8):	Statyczna biblioteka GNOME desktop
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description static
-GNOME desktop static libraries.
+GNOME desktop static library.
 
 %description static -l pl.UTF-8
-Statyczne biblioteki GNOME desktop.
+Statyczna biblioteka GNOME desktop.
 
 %package apidocs
 Summary:	gnome-desktop API documentation
